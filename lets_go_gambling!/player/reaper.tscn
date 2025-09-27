@@ -94,11 +94,13 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Shop" type="Panel" parent="UI"]
-offset_left = 339.0
-offset_top = 53.0
-offset_right = 379.0
-offset_bottom = 203.0
+offset_left = 983.00006
+offset_top = 1.0
+offset_right = 1023.00006
+offset_bottom = 151.0
+scale = Vector2(4.0961604, 4.462126)
 script = ExtResource("4_df3ua")
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="UI/Shop"]
 layout_mode = 0
@@ -114,3 +116,5 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+scale = Vector2(0.5178994, 0.35140398)
+text = "X"

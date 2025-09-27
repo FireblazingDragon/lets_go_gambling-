@@ -23,7 +23,9 @@ func _on_npc_interact():
 	leave_button.pressed.connect(_on_leave_selected)
 
 func _on_shop_selected():
-	
+	var shop = $"../UI/Shop"
+	shop.openshop()
+	dialog_box.hide()
 
 func _on_leave_selected():
 	print("Player chose to ignore!")

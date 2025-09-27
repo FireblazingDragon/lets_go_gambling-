@@ -50,3 +50,5 @@ hframes = 8
 libraries = {
 &"": SubResource("AnimationLibrary_df3ua")
 }
+
+[node name="Area2D" type="Area2D" parent="."]

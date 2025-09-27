@@ -1,6 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnff1bwl7nyvw"]
+[gd_scene load_steps=9 format=3 uid="uid://cnff1bwl7nyvw"]
 
 [ext_resource type="Texture2D" uid="uid://dbbq84d1w5r4r" path="res://player/goofy/Sprite-0003.png" id="1_u8uor"]
+[ext_resource type="Script" uid="uid://dahbhiye8wlx7" path="res://player/reaper.gd" id="2_bsdyo"]
+[ext_resource type="Script" uid="uid://dy4pa6c1bonnf" path="res://player/reaper_interact.gd" id="3_2kku7"]
+[ext_resource type="Script" uid="uid://345fe3mejgod" path="res://player/shop.gd" id="4_df3ua"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2kku7"]
+radius = 1.1999999
+
+[sub_resource type="Animation" id="Animation_2kku7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_bsdyo"]
 resource_name = "reaper_float"
@@ -19,36 +40,77 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 7]
 }
 
-[sub_resource type="Animation" id="Animation_2kku7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_df3ua"]
 _data = {
 &"RESET": SubResource("Animation_2kku7"),
 &"reaper_float": SubResource("Animation_bsdyo")
 }
 
-[node name="Reaper" type="CharacterBody2D"]
+[node name="Node2D" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Reaper" type="CharacterBody2D" parent="."]
+y_sort_enabled = true
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("2_bsdyo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Reaper"]
 texture = ExtResource("1_u8uor")
 hframes = 8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Area2D" type="Area2D" parent="Reaper"]
+collision_layer = 0
+script = ExtResource("3_2kku7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reaper/Area2D"]
+position = Vector2(0, 4.9999995)
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_2kku7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Reaper"]
 libraries = {
 &"": SubResource("AnimationLibrary_df3ua")
 }
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DialogBox" type="VBoxContainer" parent="UI"]
+offset_left = 225.00002
+offset_top = 172.0
+offset_right = 265.0
+offset_bottom = 212.0
+scale = Vector2(0.8823292, 0.8637159)
+
+[node name="DialogText" type="Label" parent="UI/DialogBox"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/DialogBox"]
+layout_mode = 2
+
+[node name="Shop" type="Button" parent="UI/DialogBox/HBoxContainer"]
+layout_mode = 2
+
+[node name="Leave" type="Button" parent="UI/DialogBox/HBoxContainer"]
+layout_mode = 2
+
+[node name="Shop" type="Panel" parent="UI"]
+offset_left = 339.0
+offset_top = 53.0
+offset_right = 379.0
+offset_bottom = 203.0
+script = ExtResource("4_df3ua")
+
+[node name="Label" type="Label" parent="UI/Shop"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Shop"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="UI/Shop"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0

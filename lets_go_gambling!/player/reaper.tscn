@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnff1bwl7nyvw"]
+
+[ext_resource type="Texture2D" uid="uid://dbbq84d1w5r4r" path="res://player/goofy/Sprite-0003.png" id="1_u8uor"]
+
+[sub_resource type="Animation" id="Animation_bsdyo"]
+resource_name = "reaper_float"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20070039, 0.30235383, 0.4048761, 0.50140345, 0.6019969, 0.70222545, 0.80393106),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 7]
+}
+
+[sub_resource type="Animation" id="Animation_2kku7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_df3ua"]
+_data = {
+&"RESET": SubResource("Animation_2kku7"),
+&"reaper_float": SubResource("Animation_bsdyo")
+}
+
+[node name="Reaper" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_u8uor")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_df3ua")
+}

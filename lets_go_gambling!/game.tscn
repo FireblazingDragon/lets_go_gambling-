@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://bb5ox7pe6bq04"]
+[gd_scene load_steps=7 format=4 uid="uid://bb5ox7pe6bq04"]
 
 [ext_resource type="PackedScene" uid="uid://cfn0t35h5rw8" path="res://player/player.tscn" id="1_peov7"]
 [ext_resource type="PackedScene" uid="uid://bhjv5uavcntbu" path="res://Tile Maps/cave.tscn" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://ds03shwkwkxoy" path="res://gambling_mechine.tscn" id="3_feb5d"]
+[ext_resource type="Texture2D" uid="uid://sp6grxtpg83a" path="res://Tile Maps/glow_texture.png" id="4_7jktm"]
 
 [sub_resource type="Gradient" id="Gradient_e2o6t"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -26,4 +27,8 @@ position = Vector2(158, 141)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_peov7")]
 position = Vector2(236, 133)
-up_direction = Vector2(0.7071068, 0.7071068)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(158, 130)
+scale = Vector2(0.328125, 0.328125)
+texture = ExtResource("4_7jktm")

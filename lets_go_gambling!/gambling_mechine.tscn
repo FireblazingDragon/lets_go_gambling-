@@ -158,9 +158,10 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-11, 56)
+position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_33e5q")
 
 [connection signal="animation_finished" from="Sprite/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Sprite/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Sprite/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="button_down" from="Menu/CanvasLayer/MarginContainer/VBoxContainer/Label/Button" to="." method="_on_button_button_down"]

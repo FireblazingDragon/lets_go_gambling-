@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var dialog_box = $"../UI/DialogBox"
+@onready var dialog_box = $"../Text_Int/DialogBox"
 @onready var dialog_text = dialog_box.get_node("DialogText")
 @onready var shop_button = dialog_box.get_node("HBoxContainer/Shop")
 @onready var leave_button = dialog_box.get_node("HBoxContainer/Leave")
@@ -23,7 +23,7 @@ func _on_npc_interact():
 	leave_button.pressed.connect(_on_leave_selected)
 
 func _on_shop_selected():
-	var shop = $"../UI/Shop"
+	var shop = $"../Text_Int/Shop"
 	shop.openshop()
 	dialog_box.hide()
 
